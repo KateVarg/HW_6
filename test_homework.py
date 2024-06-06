@@ -9,7 +9,7 @@ def test_dark_theme_by_time():
     current_time = time(hour=6)
     # TODO переключите темную тему в зависимости от времени суток (с 22 до 6 часов утра - ночь)
 
-    if current_time.hour >= 22 or current_time.hour <= 6:
+    if current_time.hour >= 22 or current_time.hour < 6:
         is_dark_theme = True
     else:
         is_dark_theme = False
@@ -39,7 +39,7 @@ def test_dark_theme_by_time_and_user_choice():
     if dark_theme_enabled_by_user:
         is_dark_theme = True
     elif dark_theme_enabled_by_user is None:
-        if current_time.hour >= 22 or current_time.hour <= 6:
+        if current_time.hour >= 22 or current_time.hour < 6:
             is_dark_theme = True
         else:
             is_dark_theme = False
@@ -81,7 +81,7 @@ def test_find_suitable_user():
     suitable_users = []
 
     for user in users:
-        if user["age"] <= 20:
+        if user["age"] < 20:
             suitable_users.append(user)
     print('4. Все пользователи младше 20 лет:')
     pprint(suitable_users)
